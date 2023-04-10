@@ -1,16 +1,63 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+	<title>Fibonacci Number Finder</title>
+	<style>
+		body {
+			font-family: sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+		input[type="number"] {
+			font-size: 1.2em;
+			padding: 5px;
+		}
+		button {
+			font-size: 1.2em;
+			padding: 5px 10px;
+			background-color: #4CAF50;
+			color: #fff;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+	</style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+	<h1>Fibonacci Number Finder</h1>
+	<p>Enter a positive integer to find the nth Fibonacci number:</p>
+	<input type="number" id="inputNumber">
+	<button onclick="findFibonacci()">Find Fibonacci Number</button>
+	<p id="result"></p>
 
+	<script>
+		function findFibonacci() {
+			// Get the input value
+			let input = document.getElementById("inputNumber").value;
+
+			// Convert the input to a number
+			input = parseInt(input);
+
+			// Check if the input is valid
+			if (isNaN(input) || input <= 0) {
+				document.getElementById("result").innerHTML = "Please enter a positive integer.";
+				return;
+			}
+
+			// Calculate the nth Fibonacci number
+			let fib = fibonacci(input);
+
+			// Display the result
+			document.getElementById("result").innerHTML = "The " + input + "th Fibonacci number is " + fib + ".";
+		}
+
+		function fibonacci(n) {
+			if (n <= 1) {
+				return n;
+			} else {
+				return fibonacci(n - 1) + fibonacci(n - 2);
+			}
+		}
+	</script>
 </body>
-
 </html>
